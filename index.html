@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aryan Singh - Portfolio V1</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* RESET & CORE */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: #141414; color: #ffffff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; overflow-x: hidden; }
+        
+        /* NAV */
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 4%; position: fixed; width: 100%; top: 0; z-index: 1000; background: linear-gradient(to bottom, rgba(0,0,0,0.9) 10%, rgba(0,0,0,0)); }
+        .logo { color: #E50914; font-size: 28px; font-weight: bold; letter-spacing: 1px; text-shadow: 0px 1px 2px #000; }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { color: #e5e5e5; text-decoration: none; font-size: 14px; transition: color 0.3s; }
+        .nav-links a:hover { color: #b3b3b3; }
+
+        /* HERO - VERSION 1 IMAGE */
+        .hero {
+            height: 90vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding-left: 4%;
+            /* IMAGE 1 APPLIED HERE */
+            background: linear-gradient(to right, rgba(0,0,0,0.9) 25%, rgba(0,0,0,0.2)), 
+                        url('https://i.postimg.cc/MZjz4TXW/Gemini-Generated-Image-a6k4haa6k4haa6k4.png') no-repeat center center/cover;
+        }
+        
+        .hero-content { max-width: 650px; margin-top: 60px; animation: fadeIn 1.5s ease-in; z-index: 2; }
+        .hero-title { font-size: clamp(40px, 6vw, 80px); font-weight: 800; margin-bottom: 10px; line-height: 1; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
+        .hero-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 20px; font-weight: bold; font-size: 16px; }
+        .match-score { color: #46d369; }
+        .year { color: #a3a3a3; }
+        .maturity-rating { border: 1px solid #a3a3a3; padding: 2px 6px; font-size: 12px; text-transform: uppercase; background: rgba(0,0,0,0.4); }
+        .hero-desc { font-size: 18px; line-height: 1.4; margin-bottom: 25px; color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,1); }
+        .btn-container { display: flex; gap: 15px; flex-wrap: wrap; }
+        .btn { padding: 10px 25px; border-radius: 4px; font-size: 1.1rem; font-weight: bold; border: none; cursor: pointer; display: flex; align-items: center; gap: 10px; text-decoration: none; transition: all 0.2s; }
+        .btn:hover { transform: scale(1.05); opacity: 0.9; }
+        .btn-play { background-color: white; color: black; }
+        .btn-info { background-color: rgba(109, 109, 110, 0.8); color: white; }
+
+        /* ROWS & CARDS */
+        .category-row { padding: 20px 4%; margin-bottom: 10px; position: relative; z-index: 2; }
+        .first-row { margin-top: -100px; }
+        .row-header { font-size: 1.4rem; font-weight: 600; margin-bottom: 15px; color: #e5e5e5; text-shadow: 1px 1px 2px black; }
+        .slider { display: flex; gap: 10px; overflow-x: auto; padding: 20px 0; scroll-behavior: smooth; scrollbar-width: none; }
+        .slider::-webkit-scrollbar { display: none; }
+        .card { min-width: 260px; height: 150px; background-color: #2f2f2f; border-radius: 4px; position: relative; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; overflow: hidden; display: flex; flex-direction: column; justify-content: center; padding: 20px; }
+        .card:hover { transform: scale(1.15); z-index: 10; background-color: #3a3a3a; box-shadow: 0 0 15px rgba(0,0,0,0.7); }
+        .card-skill { border-left: 4px solid #E50914; }
+        .card-exp { border-left: 4px solid #46d369; }
+        .card-proj { border-left: 4px solid #0071eb; }
+        .card-edu { border-left: 4px solid #f5c518; }
+        .card-title { font-size: 18px; font-weight: bold; margin-bottom: 5px; }
+        .card-meta { font-size: 11px; color: #46d369; font-weight: bold; margin-bottom: 5px; }
+        .card-desc { font-size: 12px; color: #b3b3b3; line-height: 1.3; }
+
+        /* FOOTER */
+        footer { margin-top: 60px; padding: 50px 4%; color: #757575; font-size: 13px; background-color: #141414; border-top: 1px solid #333; }
+        .social-icons { font-size: 24px; margin-bottom: 20px; display: flex; gap: 20px; }
+        .social-icons a { color: white; transition: color 0.2s; }
+        .social-icons a:hover { color: #E50914; }
+        footer p { margin-bottom: 10px; }
+        footer a.text-link { color: #757575; text-decoration: none; }
+        footer a.text-link:hover { text-decoration: underline; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 768px) { .hero { height: 80vh; background-position: 70% center; } .hero-title { font-size: 40px; } .hero-desc { font-size: 14px; max-width: 100%; } .first-row { margin-top: 0; } }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">ARYAN.</div>
+        <div class="nav-links"><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#achievements">Awards</a></div>
+    </nav>
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">ARYAN SINGH</h1>
+            <div class="hero-meta"><span class="match-score">98% Match</span><span class="year">2025 (Expected)</span><span class="maturity-rating">DATA ANALYST</span><span class="year">3 Seasons</span></div>
+            <div class="hero-desc">Data-driven BBA (Finance & Analytics) student skilled in Python, SQL, and Power BI. Passionate about translating complex data into business strategy.</div>
+            <div class="btn-container">
+                <a href="https://www.linkedin.com/in/aryan-singh-2a6ba0270/" target="_blank" class="btn btn-play"><i class="fab fa-linkedin"></i> Connect</a>
+                <a href="https://www.linkedin.com/in/aryan-singh-2a6ba0270/overlay/about-this-profile/" target="_blank" class="btn btn-info"><i class="fas fa-file-pdf"></i> View Resume</a>
+            </div>
+        </div>
+    </header>
+    <!-- SKILLS -->
+    <div class="category-row first-row" id="skills"><div class="row-header">Trending in Your Area: Top Skills</div><div class="slider"><div class="card card-skill"><div class="card-title">Python</div><div class="card-meta">Pandas & NumPy</div><div class="card-desc">Data cleaning, analysis, and automation.</div></div><div class="card card-skill"><div class="card-title">SQL</div><div class="card-meta">Database Mgmt</div><div class="card-desc">Querying and managing large datasets.</div></div><div class="card card-skill"><div class="card-title">Power BI</div><div class="card-meta">Visualization</div><div class="card-desc">Creating interactive dashboards & KPIs.</div></div><div class="card card-skill"><div class="card-title">Machine Learning</div><div class="card-meta">Scikit-learn</div><div class="card-desc">Regression models & predictive analytics.</div></div></div></div>
+    <!-- EXPERIENCE -->
+    <div class="category-row" id="experience"><div class="row-header">Season 1: The Experience</div><div class="slider"><div class="card card-exp" style="min-width: 350px;"><div class="card-title">Vodafone Idea Ltd</div><div class="card-meta">S1:E1 • Business Intelligence Intern</div><div class="card-desc">• Cleaned large distributor datasets.<br>• Created 5+ weekly performance reports.</div></div><div class="card card-exp"><div class="card-title">Deloitte Australia</div><div class="card-meta">Simulation</div><div class="card-desc">Data Analytics Job Simulation.</div></div><div class="card card-exp"><div class="card-title">BCG</div><div class="card-meta">Simulation</div><div class="card-desc">GenAI Job Simulation.</div></div></div></div>
+    <!-- PROJECTS -->
+    <div class="category-row" id="projects"><div class="row-header">Critically Acclaimed Projects</div><div class="slider"><div class="card card-proj" style="min-width: 320px;"><div class="card-title">Churn Prediction</div><div class="card-meta">Python • 78% Accuracy</div><div class="card-desc">Built a Logistic Regression model on 5,000+ records to predict customer churn.</div></div><div class="card card-proj" style="min-width: 320px;"><div class="card-title">Sales Dashboard</div><div class="card-meta">Power BI</div><div class="card-desc">Designed interactive visuals tracking revenue, sales, and churn KPIs.</div></div><div class="card card-proj" style="min-width: 320px;"><div class="card-title">Stock Market Trends</div><div class="card-meta">Python & Excel</div><div class="card-desc">Conducted trend forecasting and visualized complex market patterns.</div></div></div></div>
+    <!-- EDUCATION -->
+    <div class="category-row" id="achievements"><div class="row-header">Education & International Releases</div><div class="slider"><div class="card card-edu"><div class="card-title">MDU University</div><div class="card-meta">2022 - 2025</div><div class="card-desc">BBA in Finance & Analytics.</div></div><div class="card card-edu"><div class="card-title">German (B1)</div><div class="card-meta">Certification</div><div class="card-desc">Professional proficiency in German.</div></div><div class="card card-edu"><div class="card-title">French (A2)</div><div class="card-meta">Certification</div><div class="card-desc">Elementary proficiency in French.</div></div><div class="card card-edu"><div class="card-title">UCMAS</div><div class="card-meta">Runner-up</div><div class="card-desc">State-Level Mental Math Competition.</div></div></div></div>
+    <!-- FOOTER -->
+    <footer><div class="social-icons"><a href="https://www.linkedin.com/in/aryan-singh-2a6ba0270/" target="_blank"><i class="fab fa-linkedin"></i></a><a href="mailto:aryansingh12082003@gmail.com"><i class="fas fa-envelope"></i></a><a href="tel:+916390871500"><i class="fas fa-phone"></i></a></div><p><a href="tel:+916390871500" class="text-link">Call: +91 6390871500</a>&nbsp;|&nbsp;<a href="mailto:aryansingh12082003@gmail.com" class="text-link">aryansingh12082003@gmail.com</a></p><p>Lucknow, Uttar Pradesh, India</p><br><p style="font-size: 11px;">© 2025 Aryan Singh. Concept inspired by Netflix.</p></footer>
+</body>
+</html>
